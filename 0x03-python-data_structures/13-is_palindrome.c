@@ -12,7 +12,7 @@ int is_palindrome(listint_t **head)
 	listint_t *curr, **arr;
 	ssize_t len, i, pal;
 
-	if (head == NULL)
+	if (head == NULL || *head == NULL)
 		return (0);
 	curr = *head;
 	len = 0;
