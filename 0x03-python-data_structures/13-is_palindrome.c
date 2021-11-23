@@ -39,12 +39,11 @@ int is_palindrome(listint_t **head)
 		if (arr[i]->n != curr->n)
 		{
 			pal = 0;
-			free(arr);
 			break;
 		}
 		curr = curr->next;
 	}
-
+	free(arr);
 	if (pal == 1)
 		return (1);
 	return (0);
