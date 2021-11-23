@@ -8,7 +8,7 @@
   */
 int is_palindrome(listint_t **head)
 {
-	listint_t *curr, *arr[50];
+	listint_t *curr, *arr[1024];
 	ssize_t len, i, pal;
 
 	if (head == NULL)
