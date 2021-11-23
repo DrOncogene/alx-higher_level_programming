@@ -22,7 +22,7 @@ int is_palindrome(listint_t **head)
 		len++;
 		curr = curr->next;
 	}
-	arr = malloc(sizeof(listint_t) * len);
+	arr = malloc(sizeof(listint_t *) * len);
 	if (arr == NULL)
 		return (0);
 	curr = *head;
