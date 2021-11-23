@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
     '''prints a matrix'''
-    if len(matrix) = 0:
+    if len(matrix) == 0:
         print("")
     for item in matrix:
         if type(item) == list:
