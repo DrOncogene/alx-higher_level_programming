@@ -4,8 +4,8 @@ def roman_to_int(roman_str):
         return 0
     x, y = 0, 2
     twos = []
-    for i in range(0, (len(roman_string) // 2) + 1):
-        twos.append(roman_string.upper()[x:y])
+    for i in range(0, (len(roman_str) // 2) + 1):
+        twos.append(roman_str.upper()[x:y])
         x, y = x + 2, y + 2
     res = 0
     for each_two in twos:
