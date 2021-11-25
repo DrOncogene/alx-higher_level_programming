@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 def roman_to_int(roman_string):
+    if roman_string is None or type(roman_string) != str:
+        return 0
     x, y = 0, 2
     twos = []
     for i in range(0, (len(roman_string) // 2) + 1):
