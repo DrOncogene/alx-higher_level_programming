@@ -4,10 +4,11 @@ def best_score(a_dict):
         return None
     scores = [item[1] for item in a_dict.items()]
     keys = [item[0] for item in a_dict.items()]
+    best = scores[0]
     for score in scores:
         index = scores.index(score)
         if index + 1 < len(scores):
-            best = check(score, scores[scores.index(score) + 1])
+            best = check(best, score)
     return keys[scores.index(best)]
 
 
