@@ -17,7 +17,7 @@ def evaluate(string):
     value, value1 = 0, check_subtr(string)
     rom_dict = {'I': 1, 'V': 5, 'X': 10, 'L': 50,
                 'C': 100, 'D': 500, 'M': 1000}
-    if value1 is None:
+    if value1 == 0:
         for numeral in string:
             value += rom_dict[numeral]
         return value
@@ -30,4 +30,4 @@ def check_subtr(string):
     for k, v in rom_subtr.items():
         if k == string:
             return v
-    return None
+    return 0
