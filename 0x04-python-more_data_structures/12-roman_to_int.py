@@ -4,7 +4,6 @@ def roman_to_int(roman_string):
     twos = []
     for i in range(0, (len(roman_string) // 2) + 1):
         twos.append(roman_string.upper()[x:y])
-        print(twos)
         x, y = x + 2, y + 2
     res = 0
     for each_two in twos:
