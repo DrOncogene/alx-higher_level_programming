@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-def roman_to_int(roman_string):
-    if roman_string is None or type(roman_string) != str:
+def roman_to_int(roman_str):
+    if roman_str is None or type(roman_str) != str or roman_str == '':
         return 0
     x, y = 0, 2
     twos = []
