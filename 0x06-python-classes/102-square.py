@@ -61,7 +61,7 @@ class Square:
         '''== operator overload'''
         if square2 is None:
             return False
-        return self.area() > square2.area()
+        return self.area() == square2.area()
 
     def __le__(self, square2: Square) -> bool:
         '''<= operator overload'''
