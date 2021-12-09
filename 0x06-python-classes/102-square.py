@@ -45,37 +45,37 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = value
 
-    def __lt__(self, square2: Square) -> bool:
+    def __lt__(self, square2: object) -> bool:
         '''< operator overload'''
         if square2 is None:
             return False
         return self.area() < square2.area()
 
-    def __gt__(self, square2: Square) -> bool:
+    def __gt__(self, square2: object) -> bool:
         '''> operator overload'''
         if square2 is None:
             return False
         return self.area() > square2.area()
 
-    def __eq__(self, square2: Square) -> bool:
+    def __eq__(self, square2: object) -> bool:
         '''== operator overload'''
         if square2 is None:
             return False
         return self.area() == square2.area()
 
-    def __le__(self, square2: Square) -> bool:
+    def __le__(self, square2: object) -> bool:
         '''<= operator overload'''
         if square2 is None:
             return False
         return self.area() <= square2.area()
 
-    def __ge__(self, square2: Square) -> bool:
+    def __ge__(self, square2: object) -> bool:
         '''>= operator overload'''
         if square2 is None:
             return False
         return self.area() >= square2.area()
 
-    def __ne__(self, square2: Square) -> bool:
+    def __ne__(self, square2: object) -> bool:
         '''!= operator overload'''
         if square2 is None:
             return False
