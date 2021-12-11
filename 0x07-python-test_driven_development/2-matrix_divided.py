@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''module that contain a function that divides all elements of a
-matrix'''
+matrix by a given number'''
 
 
 def matrix_divided(matrix, div):
