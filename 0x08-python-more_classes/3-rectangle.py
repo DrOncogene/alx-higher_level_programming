@@ -54,6 +54,8 @@ class Rectangle:
     def __str__(self) -> str:
         '''string representation of the rectangle using #'''
         rep_str = ""
+        if self.height == 0 or self.width == 0:
+            return rep_str
         for i in range(self.height):
             for j in range(self.width):
                 rep_str += '#'
