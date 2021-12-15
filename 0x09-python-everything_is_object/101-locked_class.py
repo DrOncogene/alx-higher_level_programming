@@ -10,5 +10,5 @@ class LockedClass:
         if attr == 'first_name':
             self.__dict__[attr] = value
         else:
-            raise AttributeError("LockedClass object has no \
-attribute '{}'".format(attr))
+            raise AttributeError("'{}' object has no \
+attribute '{}'".format(self.__class__.__name__, attr))
