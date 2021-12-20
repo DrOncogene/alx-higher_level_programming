@@ -9,9 +9,4 @@ def lookup(obj: object) -> list:
     Return:
         list: list of obj's attr and methods
     '''
-    the_list = []
-    try:
-        the_list = list(obj.__dict__)
-    except AttributeError:
-        the_list = list(type(obj).__dict__)
-    return the_list
+    return dir(obj)
