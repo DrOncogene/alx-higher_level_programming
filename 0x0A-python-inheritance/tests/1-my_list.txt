@@ -1,0 +1,25 @@
+'''doctest file for module 1-my_list.py
+>>> mylist = __import__('1-my_list').MyList
+>>> a = mylist([5,3,6,7,1,9])
+>>> a
+[5, 3, 6, 7, 1, 9]
+>>> print(a)
+[5, 3, 6, 7, 1, 9]
+>>> a.append(2)
+>>> a.append(4)
+>>> a
+[5, 3, 6, 7, 1, 9, 2, 4]
+>>> print(a)
+[5, 3, 6, 7, 1, 9, 2, 4]
+>>> a.print_sorted()
+[1, 2, 3, 4, 5, 6, 7, 9]
+>>> a
+[5, 3, 6, 7, 1, 9, 2, 4]
+>>> a.pop()
+4
+>>> a
+[5, 3, 6, 7, 1, 9, 2]
+>>> a.print_sorted()
+[1, 2, 3, 5, 6, 7, 9]
+
+''' 
