@@ -13,5 +13,23 @@ ValueError: square must be greater than 0
 >>> a.integer_validator("square", -24)
 Traceback (most recent call last):
 ValueError: square must be greater than 0
+>>> a.integer_validator("line")
+Traceback (most recent call last):
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+>>> a.integer_validator()
+Traceback (most recent call last):
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+>>> a.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+>>> a.integer_validator("sq", {3,5})
+Traceback (most recent call last):
+TypeError: sq must be an integer
+>>> a.integer_validator("sq", [4])
+Traceback (most recent call last):
+TypeError: sq must be an integer
+>>> a.integer_validator("sq", (1,2))
+Traceback (most recent call last):
+TypeError: sq must be an integer
 
 '''
