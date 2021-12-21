@@ -1,0 +1,17 @@
+'''
+doctest file for module 7-base_geometry.py
+
+>>> BaseGeometry = __import__("7-base_geometry").BaseGeometry
+>>> a = BaseGeometry()
+>>> a.integer_validator("name", 150)
+>>> a.integer_validator("line", "150")
+Traceback (most recent call last):
+TypeError: line must be an integer
+>>> a.integer_validator("square", 0)
+Traceback (most recent call last):
+ValueError: square must be greater than 0
+>>> a.integer_validator("square", -24)
+Traceback (most recent call last):
+ValueError: square must be greater than 0
+
+'''
