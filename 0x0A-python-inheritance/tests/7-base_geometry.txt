@@ -31,5 +31,14 @@ TypeError: sq must be an integer
 >>> a.integer_validator("sq", (1,2))
 Traceback (most recent call last):
 TypeError: sq must be an integer
+>>> area()
+Traceback (most recent call last):
+NameError: name 'area' is not defined
+>>> a.integer_validator("sq", None)
+Traceback (most recent call last):
+TypeError: sq must be an integer
+>>> a.integer_validator("sq", True)
+Traceback (most recent call last):
+TypeError: sq must be an integer
 
 '''
