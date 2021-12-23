@@ -20,20 +20,19 @@ for status in status_codes:
 size = 0
 numInterrupt = 0
 lines = 0
-while True:
-    try:
-        line = sys.stdin.readline()
-        if len(line) == 0 and lines < 10:
-            print_stats(counts, size)
-            break
+try:
+    for line in sys.stdin:
         line_list = line.split(" ")
-        status = line_list[-2]
-        size += int(line_list[-1])
-        counts[status] += 1
+        try:
+            status = line_list[-2]
+            size += int(line_list[-1])
+            counts[status] += 1
+        except Exception:
+            continue
         lines += 1
         if lines % 10 == 0:
             print_stats(counts, size)
-    except KeyboardInterrupt as e:
-        print_stats(counts, size)
-        sleep(2)
-        raise
+except KeyboardInterrupt:
+    print_stats(counts, size)
+    sleep(2)
+    raise
