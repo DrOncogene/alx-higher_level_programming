@@ -18,15 +18,18 @@ for status in status_codes:
     counts[status] = 0
 
 size = 0
-numInterrupt = 0
 lines = 0
 try:
-    for line in sys.stdin:
+    content = list(sys.stdin)
+    for index, line in enumerate(content):
         line_list = line.split(" ")
         try:
             status = line_list[-2]
             size += int(line_list[-1])
             counts[status] += 1
+            if index == len(content) - 1:
+                print_stats(counts, size)
+                break
         except Exception:
             continue
         lines += 1
