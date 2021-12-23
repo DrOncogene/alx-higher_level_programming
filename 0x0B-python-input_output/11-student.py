@@ -35,6 +35,8 @@ class Student:
             json(dict): the new attrs
         Return: nothing
         '''
+        if len(json) == 0:
+            return
         self.__dict__.clear()
         for k, v in json.items():
             self.__dict__[k] = v
