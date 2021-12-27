@@ -42,7 +42,7 @@ class Rectangle(Base):
 
     @property
     def y(self):
-        return self.__width
+        return self.__y
 
     @y.setter
     def y(self, value):
@@ -68,3 +68,8 @@ class Rectangle(Base):
             for j in range(self.width):
                 print("#", end='')
             print('')
+
+    def __str__(self):
+        '''string representation of a rect obj'''
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
+{self.width}/{self.height}"
