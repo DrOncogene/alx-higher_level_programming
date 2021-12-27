@@ -44,7 +44,7 @@ class Rectangle(Base):
     def y(self):
         return self.__width
 
-    @width.setter
+    @y.setter
     def y(self, value):
         Rectangle.validate_input("y", value)
         self.__y = value
@@ -57,3 +57,8 @@ class Rectangle(Base):
             raise ValueError(f"{name} must be > 0")
         if name in ["x", "y"] and value < 0:
             raise ValueError(f"{name} must be >= 0")
+
+    def area(self):
+        '''calculates and return the area of this rect'''
+        return self.width * self.height
+
