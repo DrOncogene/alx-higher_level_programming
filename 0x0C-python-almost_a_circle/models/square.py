@@ -21,6 +21,35 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        '''assigns new values to the square attributes using *args'''
+        attr_list = ["id", "size", "x", "y"]
+        if args is not None and len(args) > 0:
+            if len(args) <= len(attr_list):
+                attr_list = attr_list[:len(args)]
+            for i in range(len(attr_list)):
+                self.__update_attr(i, args[i])
+            return
+
+        attr_list = ["id", "size", "x", "y"]
+        for key, value in kwargs.items():
+            try:
+                index = attr_list.index(key)
+            except ValueError:
+                continue
+            self.__update_attr(index, value)
+
+    def __update_attr(self, index, value):
+        '''convinience method to set attrs from within update() method'''
+        if index == 0:
+            self.id = value
+        elif index == 1:
+            self.size = value
+        elif index == 2:
+            self.x = value
+        elif index == 3:
+            self.y = value
+
     def __str__(self):
         '''string representation of a square obj'''
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
