@@ -78,12 +78,23 @@ class Rectangle(Base):
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
 {self.width}/{self.height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         '''assigns new values to the rect attributes using *args'''
-        if len(args) <= 5:
+        if len(args) <= len(self.__dict__):
             attr_list = list(self.__dict__)[:len(args)]
         else:
             attr_list = list(self.__dict__)
 
         for i in range(len(attr_list)):
             self.__dict__[attr_list[i]] = args[i]
+
+        if args is not None and len(args) > 0:
+            return
+
+        attr_list = list(self.__dict__)
+        for key, value in kwargs.items():
+            if key == "id":
+                self.__dict__[key] = value
+            mangled = f"_Rectangle__{key}"
+            if mangled in attr_list:
+                self.__dict__[mangled] = value
