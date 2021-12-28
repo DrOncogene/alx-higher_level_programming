@@ -80,21 +80,31 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         '''assigns new values to the rect attributes using *args'''
-        if len(args) <= len(self.__dict__):
-            attr_list = list(self.__dict__)[:len(args)]
-        else:
-            attr_list = list(self.__dict__)
-
-        for i in range(len(attr_list)):
-            self.__dict__[attr_list[i]] = args[i]
-
+        attr_list = ["id", "width", "height", "x", "y"]
         if args is not None and len(args) > 0:
+            if len(args) <= len(attr_list):
+                attr_list = attr_list[:len(args)]
+            for i in range(len(attr_list)):
+                self.__update_attr(i, args[i])
             return
 
-        attr_list = list(self.__dict__)
+        attr_list = ["id", "width", "height", "x", "y"]
         for key, value in kwargs.items():
-            if key == "id":
-                self.__dict__[key] = value
-            mangled = f"_Rectangle__{key}"
-            if mangled in attr_list:
-                self.__dict__[mangled] = value
+            try:
+                index = attr_list.index(key)
+            except ValueError:
+                continue
+            self.__update_attr(index, value)
+
+    def __update_attr(self, index, value):
+        '''convinience method to set attrs from within update() method'''
+        if index == 0:
+            self.id = value
+        elif index == 1:
+            self.width = value
+        elif index == 2:
+            self.height = value
+        elif index == 3:
+            self.x = value
+        elif index == 4:
+            self.y = value
