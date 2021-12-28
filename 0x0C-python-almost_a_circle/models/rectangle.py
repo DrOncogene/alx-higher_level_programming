@@ -77,3 +77,13 @@ class Rectangle(Base):
         '''string representation of a rect obj'''
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
 {self.width}/{self.height}"
+
+    def update(self, *args):
+        '''assigns new values to the rect attributes using *args'''
+        if len(args) <= 5:
+            attr_list = list(self.__dict__)[:len(args)]
+        else:
+            attr_list = list(self.__dict__)
+
+        for i in range(len(attr_list)):
+            self.__dict__[attr_list[i]] = args[i]
