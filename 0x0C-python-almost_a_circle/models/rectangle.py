@@ -108,3 +108,13 @@ class Rectangle(Base):
             self.x = value
         elif index == 4:
             self.y = value
+
+    def to_dictionary(self) -> dict:
+        '''returns a dict of the rect object attributes'''
+        attr_dict = {}
+        attr_dict['x'] = self.x
+        attr_dict['y'] = self.y
+        attr_dict['id'] = self.id
+        attr_dict['height'] = self.height
+        attr_dict['width'] = self.width
+        return attr_dict
