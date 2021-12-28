@@ -26,6 +26,14 @@ class Base:
             return "[]"
         return json.dumps(list_dict)
 
+    @staticmethod
+    def from_json_string(json_string) -> list:
+        '''retrieves a list of objects from json_string'''
+        if json_string is None or len(json_string) == 0:
+            return []
+
+        return json.loads(json_string)
+
     @classmethod
     def save_to_file(cls, list_objs):
         '''save a json str of list_objs to a file'''
