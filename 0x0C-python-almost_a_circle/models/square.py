@@ -50,6 +50,15 @@ class Square(Rectangle):
         elif index == 3:
             self.y = value
 
+    def to_dictionary(self) -> dict:
+        '''returns a dict of the square object attributes'''
+        attr_dict = {}
+        attr_dict['id'] = self.id
+        attr_dict['size'] = self.size
+        attr_dict['x'] = self.x
+        attr_dict['y'] = self.y
+        return attr_dict
+
     def __str__(self):
         '''string representation of a square obj'''
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
