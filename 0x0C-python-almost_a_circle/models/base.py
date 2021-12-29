@@ -41,3 +41,14 @@ class Base:
         with open(filename, "w") as f:
             list_dict = [obj.to_dictionary() for obj in list_objs]
             f.write(Base.to_json_string(list_dict))
+
+    @classmethod
+    def create(cls, **dictionary) -> object:
+        '''creates an object from attributes in dictionary'''
+        if cls.__name__ == "Rectangle":
+            new = cls(2, 2)
+        elif cls.__name__ == "Square":
+            new = cls(2)
+        new.update(**dictionary)
+
+        return new
