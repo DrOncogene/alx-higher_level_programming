@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''module that defines a base shapes class'''
 import json
+import os
 
 
 class Base:
@@ -28,7 +29,7 @@ class Base:
 
     @staticmethod
     def from_json_string(json_string) -> list:
-        '''retrieves a list of objects from json_string'''
+        '''retrieves a list of object dicts from json_string'''
         if json_string is None or len(json_string) == 0:
             return []
 
@@ -52,3 +53,18 @@ class Base:
         new.update(**dictionary)
 
         return new
+
+    @classmethod
+    def load_from_file(cls) -> list:
+        '''returns a list of instances after loading them from a json file'''
+        filename = f"{cls.__name__}.json"
+        if not os.path.exists(filename):
+            return []
+
+        list_objs = []
+        with open(filename, "r") as f:
+            obj_list = Base.from_json_string(f.read())
+            for obj in obj_list:
+                list_objs.append(cls.create(**obj))
+
+        return list_objs
