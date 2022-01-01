@@ -6,8 +6,8 @@ from models.rectangle import Rectangle
 class Square(Rectangle):
     '''class to define square objects'''
 
-    def __init__(self, size, x=0, y=0, id=None):
-        super().__init__(size, size, x=x, y=y, id=id)
+    def __init__(self, size, x=0, y=0, id=None, test=False):
+        super().__init__(size, size, x=x, y=y, id=id, test=test)
         self.size = size
 
     @property
@@ -16,7 +16,6 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
-        '''super().validate_input("width", value)'''
         self.__size = value
         self.width = value
         self.height = value
@@ -61,4 +60,15 @@ class Square(Rectangle):
 
     def __str__(self):
         '''string representation of a square obj'''
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+
+    def __eq__(sq1, sq2):
+        if not (sq1.size == sq2.size):
+            return False
+        if not (sq1.id == sq2.id):
+            return False
+        if not (sq1.x == sq2.x):
+            return False
+        if not (sq1.y == sq2.y):
+            return False
+        return True

@@ -3,18 +3,26 @@
 import json
 import os
 import csv
+import turtle
 
 
 class Base:
     '''defines a base shapes class'''
     __nb_objects = 0
+    __test_mode = False
 
-    def __init__(self, id=None):
+    def __init__(self, id=None, test=False):
         if id is not None:
             self.id = id
+            Base.__test_mode = test
         else:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
+
+    def __del__(self):
+        if Base.__test_mode:
+            Base.__nb_objects = 0
+        del self
 
     @staticmethod
     def to_json_string(list_dict) -> str:
@@ -78,15 +86,15 @@ class Base:
         '''save an object to a file in csv format using the csv module'''
         filename = f"{cls.__name__}.csv"
         with open(filename, "w") as csvfile:
+            if list_objs is None or len(list_objs) == 0:
+                csvfile.write("")
+                return
             if cls.__name__ == "Rectangle":
                 attr_list = ['id', 'width', 'height', 'x', 'y']
             elif cls.__name__ == "Square":
                 attr_list = ['id', 'size', 'x', 'y']
             csv_writer = csv.DictWriter(csvfile, fieldnames=attr_list)
             csv_writer.writeheader()
-            if list_objs is None or len(list_objs) == 0:
-                csv_writer.writerow({})
-                return
             obj_list = [obj.to_dictionary() for obj in list_objs]
             for obj in obj_list:
                 csv_writer.writerow(obj)
@@ -151,3 +159,59 @@ class Base:
 #
 #               list_objs.append(cls.create(**obj))
 #       return list_objs
+
+    @staticmethod
+    def draw(list_rect, list_sq):
+        '''draws all rects and squares passed in lists in a window'''
+        win = turtle.Screen()
+        win.bgcolor("#333333")
+        win.title("Python -Almost a circle")
+        turt = turtle.Turtle()
+        turt.pen(pencolor="blue", fillcolor="pink", pensize=2)
+        turt.speed(1)
+        turt.penup()
+        turt.goto(10 - (win.window_width()/2), (win.window_height()/2) - 10)
+        turt.pendown()
+        cumm_height, num = 0, 0
+        for rect in list_rect:
+            if rect.height > cumm_height:
+                cumm_height = rect.height
+            num += 1
+            turt.begin_fill()
+            for i in range(2):
+                turt.forward(rect.width)
+                turt.right(90)
+                turt.forward(rect.height)
+                turt.right(90)
+            turt.end_fill()
+            pos = turt.pos()
+            turt.penup()
+            turt.goto(turt.xcor() + rect.width/2, turt.ycor()-rect.height-20)
+            turt.pencolor("red")
+            turt.write(f"Rectangle {num}", align="center")
+            turt.pencolor("blue")
+            turt.goto(pos)
+            turt.forward(rect.width + 40)
+            turt.pendown()
+        turt.penup()
+        turt.home()
+        turt.goto(10 - (win.window_width()/2), cumm_height - 40)
+        turt.pendown()
+        num = 0
+        for sq in list_sq:
+            num += 1
+            turt.begin_fill()
+            for i in range(4):
+                turt.forward(sq.size)
+                turt.right(90)
+            turt.end_fill()
+            pos = turt.pos()
+            turt.penup()
+            turt.goto(turt.xcor() + sq.width/2, turt.ycor()-sq.height-20)
+            turt.pencolor("red")
+            turt.write(f"Square {num}", align="center")
+            turt.pencolor("blue")
+            turt.goto(pos)
+            turt.forward(sq.size + 40)
+            turt.pendown()
+        turtle.done()

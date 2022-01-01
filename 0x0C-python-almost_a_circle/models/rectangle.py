@@ -6,8 +6,8 @@ from models.base import Base
 class Rectangle(Base):
     '''class for defining rect objects'''
 
-    def __init__(self, width, height, x=0, y=0, id=None):
-        super().__init__(id)
+    def __init__(self, width, height, x=0, y=0, id=None, test=False):
+        super().__init__(id, test)
         self.width = width
         self.height = height
         self.x = x
@@ -49,6 +49,7 @@ class Rectangle(Base):
         Rectangle.validate_input("y", value)
         self.__y = value
 
+    @staticmethod
     def validate_input(name: str, value: int):
         '''ensures value is an int'''
         if type(value) is not int:
@@ -64,19 +65,37 @@ class Rectangle(Base):
 
     def display(self):
         '''displays the rectangle using #'''
+        display_str = ''
         for i in range(self.y):
-            print('')
+            display_str += "\n"
         for i in range(self.height):
             for k in range(self.x):
-                print(" ", end='')
+                display_str += " "
             for j in range(self.width):
-                print("#", end='')
-            print('')
+                display_str += "#"
+            display_str += "\n"
+        print(display_str, end='')
+        return display_str
 
     def __str__(self):
         '''string representation of a rect obj'''
-        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
-{self.width}/{self.height}"
+        return (
+            f"[Rectangle] ({self.id}) {self.x}/{self.y}"
+            f" - {self.width}/{self.height}"
+        )
+
+    def __eq__(rect1, rect2):
+        if not (rect1.width == rect2.width):
+            return False
+        if not (rect1.height == rect2.height):
+            return False
+        if not (rect1.id == rect2.id):
+            return False
+        if not (rect1.x == rect2.x):
+            return False
+        if not (rect1.y == rect2.y):
+            return False
+        return True
 
     def update(self, *args, **kwargs):
         '''assigns new values to the rect attributes using *args'''
