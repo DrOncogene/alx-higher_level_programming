@@ -17,7 +17,7 @@ class TestBaseModule(unittest.TestCase):
         del self.base_obj2
         del self.base_obj3
 
-    def test_init_method(self):
+    def test_init(self):
         self.assertEqual(self.base_obj1.id, 1)
         self.assertEqual(self.base_obj2.id, 25)
         self.assertEqual(self.base_obj3.id, 2)
