@@ -100,12 +100,12 @@ class TestAccessoryMethods(unittest.TestCase):
         for sq in self.list_sq:
             self.assertEqual(sq.area(), sq.width ** 2)
 
-    def test_display(self):
-        '''tests the display() method'''
-        for sq in self.list_sq:
-            sq_str = ("\n" * sq.y) + ((' ' * sq.x) + (
-                "#" * sq.width) + "\n") * sq.width
-            self.assertEqual(sq.display(), sq_str)
+#    def test_display(self):
+#       '''tests the display() method'''
+#       for sq in self.list_sq:
+#           sq_str = ("\n" * sq.y) + ((' ' * sq.x) + (
+#               "#" * sq.width) + "\n") * sq.width
+#           self.assertEqual(sq.display(), sq_str)
 
     def test_string_repr(self):
         for sq in self.list_sq:
