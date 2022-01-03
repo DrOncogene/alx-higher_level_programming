@@ -21,10 +21,10 @@ class TestInstantiation(unittest.TestCase):
         del self.sq1
         del self.sq2
 
-    def test_size(self):
-        self.assertEqual(self.sq.size, 5)
-        self.assertEqual(self.sq1.size, 7)
-        self.assertEqual(self.sq2.size, 3)
+    def test_width(self):
+        self.assertEqual(self.sq.width, 5)
+        self.assertEqual(self.sq1.width, 7)
+        self.assertEqual(self.sq2.width, 3)
 
     def test_x(self):
         self.assertEqual(self.sq.x, 0)
@@ -50,7 +50,7 @@ class TestInstantiation(unittest.TestCase):
 
     def test_private_attr(self):
         with self.assertRaises(AttributeError):
-            self.sq.__size
+            self.sq.__width
             self.sq.__x
             self.sq.__y
 
@@ -58,7 +58,7 @@ class TestInstantiation(unittest.TestCase):
 class TestValidation(unittest.TestCase):
     '''test that the corsq attr type and value is given'''
 
-    def test_size_validation(self):
+    def test_width_validation(self):
         msg = "width must be an integer"
         msg1 = "width must be > 0"
         self.assertRaisesRegex(TypeError, msg, Square, "two")
@@ -98,20 +98,20 @@ class TestAccessoryMethods(unittest.TestCase):
     def test_area(self):
         '''tests the area() method'''
         for sq in self.list_sq:
-            self.assertEqual(sq.area(), sq.size ** 2)
+            self.assertEqual(sq.area(), sq.width ** 2)
 
     def test_display(self):
         '''tests the display() method'''
         for sq in self.list_sq:
             sq_str = ("\n" * sq.y) + ((' ' * sq.x) + (
-                "#" * sq.size) + "\n") * sq.size
+                "#" * sq.width) + "\n") * sq.width
             self.assertEqual(sq.display(), sq_str)
 
     def test_string_repr(self):
         for sq in self.list_sq:
             self.assertEqual(str(sq), (
                 f"[Square] ({sq.id}) {sq.x}/{sq.y}"
-                f" - {sq.size}")
+                f" - {sq.width}")
             )
 
 
@@ -132,7 +132,7 @@ class TestUpdateMethod(unittest.TestCase):
     def test_update_with_args(self):
         self.sq.update(5, 12, 3, 4)
         self.assertEqual(self.sq.id, 5)
-        self.assertEqual(self.sq.size, 12)
+        self.assertEqual(self.sq.width, 12)
         self.assertEqual(self.sq.x, 3)
         self.assertEqual(self.sq.y, 4)
 
@@ -140,7 +140,8 @@ class TestUpdateMethod(unittest.TestCase):
         new_parameters = {"size": 10, "id": 50, "x": 4, "y": 6}
         self.sq1.update(**new_parameters)
         self.assertEqual(self.sq1.id, 50)
-        self.assertEqual(self.sq1.size, 10)
+        self.assertEqual(self.sq1.width, 10)
+        self.assertEqual(self.sq1.height, 10)
         self.assertEqual(self.sq1.x, 4)
         self.assertEqual(self.sq1.y, 6)
 
@@ -205,7 +206,7 @@ class TestSerialization(unittest.TestCase):
             content = f.readlines()
         for i in range(1, len(content)):
             sq = self.list_sq[i - 1]
-            csv_str = f"{sq.id},{sq.size},{sq.x},{sq.y}\n"
+            csv_str = f"{sq.id},{sq.width},{sq.x},{sq.y}\n"
             self.assertEqual(content[i], csv_str)
 
     def load_from_file_csv(self):

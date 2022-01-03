@@ -202,7 +202,7 @@ class Base:
             num += 1
             turt.begin_fill()
             for i in range(4):
-                turt.forward(sq.size)
+                turt.forward(sq.width)
                 turt.right(90)
             turt.end_fill()
             pos = turt.pos()

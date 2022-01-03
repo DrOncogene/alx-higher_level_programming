@@ -8,15 +8,13 @@ class Square(Rectangle):
 
     def __init__(self, size, x=0, y=0, id=None, test=False):
         super().__init__(size, size, x=x, y=y, id=id, test=test)
-        self.size = size
 
     @property
     def size(self):
-        return self.__size
+        return self.width
 
     @size.setter
     def size(self, value):
-        self.__size = value
         self.width = value
         self.height = value
 
@@ -43,7 +41,8 @@ class Square(Rectangle):
         if index == 0:
             self.id = value
         elif index == 1:
-            self.size = value
+            self.width = value
+            self.height = value
         elif index == 2:
             self.x = value
         elif index == 3:
@@ -53,17 +52,17 @@ class Square(Rectangle):
         '''returns a dict of the square object attributes'''
         attr_dict = {}
         attr_dict['id'] = self.id
-        attr_dict['size'] = self.size
+        attr_dict['size'] = self.width
         attr_dict['x'] = self.x
         attr_dict['y'] = self.y
         return attr_dict
 
     def __str__(self):
         '''string representation of a square obj'''
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     def __eq__(sq1, sq2):
-        if not (sq1.size == sq2.size):
+        if not (sq1.width == sq2.width):
             return False
         if not (sq1.id == sq2.id):
             return False
