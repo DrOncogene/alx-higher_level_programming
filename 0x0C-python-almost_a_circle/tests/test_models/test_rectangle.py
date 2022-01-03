@@ -114,12 +114,12 @@ class TestAccessoryMethods(unittest.TestCase):
             self.assertEqual(rect.area(), (
                 rect.width * rect.height))
 
-#    def test_display(self):
-#       '''tests the display() method'''
-#        for rect in self.list_rect:
-#           rect_str = ("\n" * rect.y) + ((' ' * rect.x) + (
-#               "#" * rect.width) + "\n") * rect.height
-#           self.assertEqual(rect.display(), rect_str)
+    def test_display(self):
+        '''tests the display() method'''
+        for rect in self.list_rect:
+            rect_str = ("\n" * rect.y) + ((' ' * rect.x) + (
+                "#" * rect.width) + "\n") * rect.height
+            self.assertEqual(rect.display(), rect_str)
 
     def test_string_repr(self):
         for rect in self.list_rect:
