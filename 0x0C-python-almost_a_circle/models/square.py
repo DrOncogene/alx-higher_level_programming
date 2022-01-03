@@ -60,14 +60,3 @@ class Square(Rectangle):
     def __str__(self):
         '''string representation of a square obj'''
         return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
-
-    def __eq__(sq1, sq2):
-        if not (sq1.width == sq2.width):
-            return False
-        if not (sq1.id == sq2.id):
-            return False
-        if not (sq1.x == sq2.x):
-            return False
-        if not (sq1.y == sq2.y):
-            return False
-        return True

@@ -4,6 +4,7 @@ import json
 import os
 import csv
 import turtle
+from random import randint as rint
 
 
 class Base:
@@ -163,20 +164,27 @@ class Base:
     @staticmethod
     def draw(list_rect, list_sq):
         '''draws all rects and squares passed in lists in a window'''
+        def gen_color():
+            r, g, b = rint(1, 255), rint(1, 255), rint(1, 255)
+            return (r, g, b)
         win = turtle.Screen()
         win.bgcolor("#333333")
         win.title("Python -Almost a circle")
+        win.colormode(255)
         turt = turtle.Turtle()
-        turt.pen(pencolor="blue", fillcolor="pink", pensize=2)
-        turt.speed(1)
+        turt.pensize(2)
         turt.penup()
-        turt.goto(10 - (win.window_width()/2), (win.window_height()/2) - 10)
+        turt.goto(-(win.window_width()/2), (win.window_height()/2))
+        pos = turt.pos()
         turt.pendown()
-        cumm_height, num = 0, 0
+        turt.speed(1)
+        num = 0
         for rect in list_rect:
-            if rect.height > cumm_height:
-                cumm_height = rect.height
             num += 1
+            turt.color(gen_color(), gen_color())
+            turt.penup()
+            turt.goto(pos[0] + rect.x, pos[1] - rect.y)
+            turt.pendown()
             turt.begin_fill()
             for i in range(2):
                 turt.forward(rect.width)
@@ -184,34 +192,16 @@ class Base:
                 turt.forward(rect.height)
                 turt.right(90)
             turt.end_fill()
-            pos = turt.pos()
-            turt.penup()
-            turt.goto(turt.xcor() + rect.width/2, turt.ycor()-rect.height-20)
-            turt.pencolor("red")
-            turt.write(f"Rectangle {num}", align="center")
-            turt.pencolor("blue")
-            turt.goto(pos)
-            turt.forward(rect.width + 40)
-            turt.pendown()
-        turt.penup()
-        turt.home()
-        turt.goto(10 - (win.window_width()/2), cumm_height - 40)
-        turt.pendown()
         num = 0
         for sq in list_sq:
             num += 1
+            turt.color(gen_color(), gen_color())
+            turt.penup()
+            turt.goto(pos[0] + sq.x, pos[1] - sq.y)
+            turt.pendown()
             turt.begin_fill()
             for i in range(4):
                 turt.forward(sq.width)
                 turt.right(90)
             turt.end_fill()
-            pos = turt.pos()
-            turt.penup()
-            turt.goto(turt.xcor() + sq.width/2, turt.ycor()-sq.height-20)
-            turt.pencolor("red")
-            turt.write(f"Square {num}", align="center")
-            turt.pencolor("blue")
-            turt.goto(pos)
-            turt.forward(sq.size + 40)
-            turt.pendown()
         turtle.done()
