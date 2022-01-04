@@ -173,6 +173,11 @@ class TestSerialization(unittest.TestCase):
         self.assertEqual(Square.from_json_string(list_str), self.list_dict)
 
     def test_save_to_file(self):
+        Square.save_to_file(None)
+        self.assertTrue(ospath.exists("Square.json"))
+        with open("Square.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, "[]")
         Square.save_to_file([])
         self.assertTrue(ospath.exists("Square.json"))
         with open("Square.json", "r") as f:
@@ -197,6 +202,11 @@ class TestSerialization(unittest.TestCase):
         self.assertEqual(list_sqs, self.list_sq)
 
     def test_save_to_file_csv(self):
+        Square.save_to_file_csv(None)
+        self.assertTrue(ospath.exists("Square.json"))
+        with open("Square.csv", "r") as f:
+            content = f.read()
+        self.assertEqual(content, "")
         Square.save_to_file_csv([])
         with open("Square.csv", "r") as f:
             content = f.read()

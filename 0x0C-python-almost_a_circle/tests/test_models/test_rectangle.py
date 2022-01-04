@@ -195,6 +195,11 @@ class TestSerialization(unittest.TestCase):
         self.assertEqual(Rectangle.from_json_string(list_str), self.list_dict)
 
     def test_save_to_file(self):
+        Rectangle.save_to_file(None)
+        self.assertTrue(ospath.exists("Rectangle.json"))
+        with open("Rectangle.json", "r") as f:
+            content = f.read()
+        self.assertEqual(content, "[]")
         Rectangle.save_to_file([])
         self.assertTrue(ospath.exists("Rectangle.json"))
         with open("Rectangle.json", "r") as f:
@@ -219,6 +224,10 @@ class TestSerialization(unittest.TestCase):
         self.assertEqual(list_rects, self.list_rect)
 
     def test_save_to_file_csv(self):
+        Rectangle.save_to_file_csv(None)
+        with open("Rectangle.csv", "r") as f:
+            content = f.read()
+        self.assertEqual(content, "")
         Rectangle.save_to_file_csv([])
         with open("Rectangle.csv", "r") as f:
             content = f.read()
