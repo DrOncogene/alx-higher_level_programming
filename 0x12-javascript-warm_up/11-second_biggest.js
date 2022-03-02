@@ -5,5 +5,5 @@ if (args.length < 4) {
 } else {
   let nums = args.splice(2, args.length);
   nums = nums.sort((a, b) => { return (a - b); });
-  console.log(nums[1]);
+  console.log(nums[nums.length - 2]);
 }
