@@ -1,8 +1,7 @@
 #!/usr/bin/node
 module.exports.logMe = function (item) {
-  let index = 0;
-  function inner (item=item) {
-    console.log(index++ + ': ' + item);
+  if (typeof this.index === 'undefined') {
+    this.index = 0;
   }
-  return inner;
-}();
+  console.log(this.index++ + ': ' + item);
+};
