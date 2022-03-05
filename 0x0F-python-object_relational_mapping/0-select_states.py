@@ -1,4 +1,6 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
+"""script to select all entries from the states table from a db
+passed as an argument"""
 import MySQLdb as sqldb
 from sys import argv as sysargv
 
