@@ -11,10 +11,9 @@ def get_state():
     db = sqldb.connect(host='localhost', port=3306,
                        user=user, passwd=passwd, db=db_name)
     c = db.cursor()
-    query = f"SELECT * FROM states\
-             WHERE states.name='{state}'\
-             ORDER BY states.id"
-    c.execute(query)
+    c.execute("""SELECT * FROM states
+             WHERE states.name=%s
+             ORDER BY states.id""", (state,))
     states = c.fetchall()
     for state in states:
         print(state)
