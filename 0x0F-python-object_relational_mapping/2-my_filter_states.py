@@ -8,7 +8,7 @@ from sys import argv as sysargv
 def get_state():
     """selects all states from the database that starts with N"""
     script, user, passwd, db_name, state = sysargv
-    db = sqldb.connect(host='localhost',
+    db = sqldb.connect(host='localhost', port=3306,
                        user=user, passwd=passwd, db=db_name)
     c = db.cursor()
     query = f"SELECT * FROM states\
