@@ -14,9 +14,8 @@ def get_first_state():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).filter_by(id=1)
-    for state in states:
-        print(f"{state.id}: {state.name}")
+    state = session.query(State).first()
+    print(f"{state.id}: {state.name}")
 
     session.close()
 
