@@ -15,7 +15,9 @@ def get_first_state():
     Session = sessionmaker(bind=engine)
     session = Session()
     state = session.query(State).first()
-    if state is not None:
+    if state is None:
+        print("Nothing")
+    else:
         print(f"{state.id}: {state.name}")
 
     session.close()
