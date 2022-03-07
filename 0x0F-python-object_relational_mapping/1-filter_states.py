@@ -12,7 +12,7 @@ def get_N_states():
                        user=user, passwd=passwd, db=db_name)
     c = db.cursor()
     c.execute("""SELECT * FROM states
-              WHERE (upper(states.name) LIKE 'N%')
+              WHERE (states.name LIKE BINARY 'N%')
                ORDER BY states.id""")
     states = c.fetchall()
     for state in states:

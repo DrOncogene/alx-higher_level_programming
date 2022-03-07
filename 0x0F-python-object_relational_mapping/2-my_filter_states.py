@@ -12,7 +12,7 @@ def get_state():
                        user=user, passwd=passwd, db=db_name)
     c = db.cursor()
     query = "SELECT * FROM states\
-             WHERE states.name='{}'\
+             WHERE states.name LIKE BINARY '{}'\
              ORDER BY states.id".format(state)
     c.execute(query)
     states = c.fetchall()
