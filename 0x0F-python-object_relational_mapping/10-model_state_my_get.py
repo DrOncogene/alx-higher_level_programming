@@ -16,7 +16,7 @@ def get_state(state: str):
     session = Session()
     states = session.query(State).filter(State.name == state).all()
     for state in states:
-        print(f"{state.id}: {state.name}")
+        print(state.id)
     if len(states) == 0:
         print('Not found')
 
