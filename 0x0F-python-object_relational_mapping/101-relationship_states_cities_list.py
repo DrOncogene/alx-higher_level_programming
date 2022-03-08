@@ -18,7 +18,8 @@ def list_states_cities():
     states = session.query(State).order_by(State.id)
     for state in states:
         print("{}: {}".format(state.id, state.name))
-        for city in state.cities:
+        cities = [city for city in state.cities]
+        for city in cities:
             print("    {}: {}".format(city.id, city.name))
 
     session.close()
