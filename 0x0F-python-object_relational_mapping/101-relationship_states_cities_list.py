@@ -15,11 +15,10 @@ def list_states_cities():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).order_by(State.id).all()
+    states = session.query(State).order_by(State.id)
     for state in states:
         print(f"{state.id}: {state.name}")
-        cities = state.cities
-        for city in cities:
+        for city in state.cities:
             print(f"\t{city.id}: {city.name}")
 
     session.close()
