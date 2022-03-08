@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script to create a state with a new city"""
+"""script to list all states and their cities"""
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -8,7 +8,7 @@ from relationship_state import Base, State
 
 
 def list_states_cities():
-    """create a state called california with San Francisco"""
+    """lists all states and their cities"""
     user, passwd, db = sys.argv[1], sys.argv[2], sys.argv[3]
     engine = create_engine(f"mysql+mysqldb://{user}:\
                            {passwd}@localhost:3306/{db}")
@@ -16,10 +16,10 @@ def list_states_cities():
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(State).order_by(State.id).all()
-    print(states)
     for state in states:
         print(f"{state.id}: {state.name}")
-        for city in state.cities:
+        cities = state.cities
+        for city in cities:
             print(f"\t{city.id}: {city.name}")
 
     session.close()
