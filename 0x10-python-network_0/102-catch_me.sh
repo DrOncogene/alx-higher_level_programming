@@ -1,0 +1,3 @@
+#!/bin/bash
+# sends a request to a server for it to return 'You got me!'
+curl -sL 0.0.0.0:5000/catch_me
