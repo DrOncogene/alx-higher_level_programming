@@ -1,12 +1,8 @@
 #!/usr/bin/python3
-"""
-sends a post request and prints the response if it's a valid JSON
-prints 'No result' or 'Not valid JSON' in some cases
-
-args:
-    letter(str): single letter
-return:
-    None
+"""A script tha:
+- takes in a letter
+- sends POST request to http://0.0.0.0:5000/search_user
+with the letter as a parameter.
 """
 import sys
 import requests
@@ -26,7 +22,5 @@ def json_api(letter: str):
 
 
 if __name__ == "__main__":
-    try:
-        json_api(sys.argv[1])
-    except IndexError:
-        json_api("")
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
+    json_api(letter)
