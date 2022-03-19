@@ -10,7 +10,7 @@ def error_code(url: str):
     req = urllib.request.Request(url)
     try:
         with urllib.request.urlopen(req) as f:
-            pass
+            print(f.read().decode('utf-8'))
     except urllib.error.HTTPError as e:
         print(f"Error code: {e.code}")
 
