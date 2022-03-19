@@ -9,7 +9,8 @@ def error_code(url: str):
     """prints the error code following a request"""
     req = Request(url)
     try:
-        resp = urlopen(req)
+        with urlopen(req) as f:
+            pass
     except URLError as e:
         if hasattr(e, 'code'):
             print(f"Error code: {e.code}")
