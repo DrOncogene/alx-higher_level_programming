@@ -2,7 +2,7 @@
 """sends a request and handles the error"""
 import sys
 from urllib.request import Request, urlopen
-from urllib.error import URLError
+from urllib.error import HTTPError
 
 
 def error_code(url: str):
@@ -11,11 +11,8 @@ def error_code(url: str):
     try:
         with urlopen(req) as f:
             pass
-    except URLError as e:
-        if hasattr(e, 'code'):
-            print(f"Error code: {e.code}")
-        else:
-            pass
+    except HTTPError as e:
+        print(f"Error code: {e.code}")
 
 
 if __name__ == "__main__":
