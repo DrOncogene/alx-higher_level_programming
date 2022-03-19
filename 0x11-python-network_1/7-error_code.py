@@ -1,10 +1,12 @@
 #!/usr/bin/python3
-"""sends a request and prints the status code if >= 400"""
+"""
+sends a request and prints the status code if >= 400
+"""
 import sys
 import requests
 
 
-def error_code(url: str):
+def print_error_code(url: str):
     """prints the error code following a request"""
     resp = requests.get(url)
     if resp.status_code >= 400:
@@ -14,4 +16,4 @@ def error_code(url: str):
 
 
 if __name__ == "__main__":
-    error_code(sys.argv[1])
+    print_error_code(sys.argv[1])
