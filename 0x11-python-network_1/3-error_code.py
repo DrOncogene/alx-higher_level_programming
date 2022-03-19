@@ -3,9 +3,9 @@
 
 
 if __name__ == "__main__":
-    import sys
     import urllib.request
     import urllib.error
+    from sys import argv
     req = urllib.request.Request(sys.argv[1])
     try:
         with urllib.request.urlopen(req) as f:
