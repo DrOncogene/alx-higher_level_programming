@@ -1,3 +1,3 @@
 #!/bin/bash
 # prints all http methods supported by a server
-curl -si -X OPTIONS --http1.1 -L "$1" | grep -oP 'Allow: \K\S+' | sed 's/,/, /g'
+curl -si -X OPTIONS "$1" | grep 'Allow' | cut -d " " -f 2-
