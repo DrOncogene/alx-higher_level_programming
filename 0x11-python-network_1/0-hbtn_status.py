@@ -9,9 +9,9 @@ def get_status():
     with urllib.request.urlopen(req) as f:
         resp = f.read()
         print('Body response:')
-        print('\t - type: {}'.format(type(resp)))
-        print('\t - content: {}'.format(resp))
-        print('\t - utf8 content: {}'.format(resp.decode('utf-8')))
+        print('\t- type: {}'.format(type(resp)))
+        print('\t- content: {}'.format(resp))
+        print('\t- utf8 content: {}'.format(resp.decode('utf-8')))
 
 
 if __name__ == "__main__":
