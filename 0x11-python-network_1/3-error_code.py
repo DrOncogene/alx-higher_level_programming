@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """sends a request and handles the HTTPError"""
-import sys
-import urllib.request
-import urllib.error
 
 
 if __name__ == "__main__":
-    req = urllib.request.Request(url)
+    import sys
+    import urllib.request
+    import urllib.error
+    req = urllib.request.Request(sys.argv[1])
     try:
         with urllib.request.urlopen(req) as f:
             print(f.read().decode('utf-8'))
