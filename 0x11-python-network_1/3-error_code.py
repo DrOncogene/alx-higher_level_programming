@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""sends a request and handles the error"""
+"""sends a request and handles the HTTPError"""
 import sys
 import urllib.request
 import urllib.error
