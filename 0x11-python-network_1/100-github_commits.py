@@ -14,7 +14,8 @@ if __name__ == "__main__":
     commits = res.json()
 
     for i in range(len(commits)):
-        if i < 10:
-            sha = commits[i].get('sha')
-            author_name = commits[i].get('commit').get('author').get('name')
-            print(f"{sha}: {author_name}")
+        if i >= 10:
+            break
+        sha = commits[i].get('sha')
+        author_name = commits[i].get('commit').get('author').get('name')
+        print(f"{sha}: {author_name}")
