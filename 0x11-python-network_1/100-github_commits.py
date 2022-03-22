@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Script that
+"""
+Script that:
   - takes Github username and repo
   - list 10 commits by commit time
 """
