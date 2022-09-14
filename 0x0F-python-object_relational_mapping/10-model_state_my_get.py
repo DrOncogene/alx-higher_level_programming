@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""script to print any State object that contains 'a' from a db"""
-from model_state import Base, State
+"""script to print the id of a given state from the db"""
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
+from model_state import Base, State
 
 
 def get_state(state: str):
-    """selects all states with 'a' in their name from states"""
+    """selects a given state from the db"""
     user, passwd, db = sys.argv[1], sys.argv[2], sys.argv[3]
     engine = create_engine(f"mysql+mysqldb://{user}:\
                            {passwd}@localhost:3306/{db}")

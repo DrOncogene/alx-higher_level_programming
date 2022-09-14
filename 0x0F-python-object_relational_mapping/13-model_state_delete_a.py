@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """script to delete states with a in their name"""
-from model_state import Base, State
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
+from model_state import Base, State
 
 
 def delete_state():

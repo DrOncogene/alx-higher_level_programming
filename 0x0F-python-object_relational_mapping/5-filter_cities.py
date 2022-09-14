@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """script to select all cities in a given state"""
+from sys import argv as sysargv◘
 import MySQLdb as sqldb
-from sys import argv as sysargv
 
 
 def get_state_cities():

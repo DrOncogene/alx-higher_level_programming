@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """script to display all cities with their state name"""
+import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from model_state import Base
 from model_city import City
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, relationship
-import sys
 
 
 def get_cities():

@@ -16,11 +16,10 @@ def list_states_cities():
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(State).order_by(State.id).all()
-    cities = [state.cities for state in states]
-    for i in range(len(states)):
-        print("{}: {}".format(states[i].id, states[i].name))
-        for city in cities[i]:
-            print("    {}: {}".format(city.id, city.name))
+    for i, state in enumerate(states):
+        print(f"{state.id}: {state.name}")
+        for city in state.cities:
+            print(f"    {city.id}: {city.name}")
 
     session.close()
 

@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """script to print the first State object from a db"""
-from model_state import Base, State
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
+from model_state import Base, State
 
 
 def get_first_state():

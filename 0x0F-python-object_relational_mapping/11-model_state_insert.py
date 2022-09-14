@@ -1,13 +1,13 @@
 #!/usr/bin/python3
-"""script to print any State object that contains 'a' from a db"""
-from model_state import Base, State
+"""script to add State object Loisiana a db"""
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
+from model_state import Base, State
 
 
 def add_state(state: str):
-    """selects all states with 'a' in their name from states"""
+    """adds a State object to states"""
     user, passwd, db = sys.argv[1], sys.argv[2], sys.argv[3]
     engine = create_engine(f"mysql+mysqldb://{user}:\
                            {passwd}@localhost:3306/{db}")

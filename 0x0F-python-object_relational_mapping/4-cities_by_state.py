@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """script to select all entries from the cities table from a db
 passed as an argument"""
-import MySQLdb as sqldb
 from sys import argv as sysargv
+import MySQLdb as sqldb
 
 
 def get_cities():

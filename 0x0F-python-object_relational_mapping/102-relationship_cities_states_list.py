@@ -17,7 +17,7 @@ def list_cities_state():
     session = Session()
     cities = session.query(City).order_by(City.id)
     for city in cities:
-        print("{}: {} -> {}".format(city.id, city.name, city.state.name))
+        print(f"{city.id}: {city.name} -> {city.state.name}")
 
     session.close()
 

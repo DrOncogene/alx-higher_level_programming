@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """script to update the name of the state with id 2"""
-from model_state import Base, State
+import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-import sys
+from model_state import Base, State
 
 
 def update_state(id: int):

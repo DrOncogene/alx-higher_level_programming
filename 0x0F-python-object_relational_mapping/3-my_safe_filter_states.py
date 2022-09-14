@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """script to select matching entries from the states table from a db
 passed as an argument"""
-import MySQLdb as sqldb
 from sys import argv as sysargv
+import MySQLdb as sqldb
 
 
 def get_state():
@@ -11,7 +11,7 @@ def get_state():
     db = sqldb.connect(host='localhost', port=3306,
                        user=user, passwd=passwd, db=db_name)
     c = db.cursor()
-    state = state.replace("'", "").replace('"', '').replace("OR", '')
+    state = state.replace("'", "").replace('"', '').replace(";", '')
     query = f"SELECT * FROM states\
              WHERE states.name='{state}'\
              ORDER BY states.id"
