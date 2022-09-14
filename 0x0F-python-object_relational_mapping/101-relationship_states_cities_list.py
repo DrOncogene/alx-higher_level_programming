@@ -18,8 +18,9 @@ def list_states_cities():
     states = session.query(State).order_by(State.id).all()
     for i, state in enumerate(states):
         print(f"{state.id}: {state.name}")
-        for city in state.cities:
-            print(f"    {city.id}: {city.name}")
+        cities = state.cities
+        for city in cities:
+            print(f"\t{city.id}: {city.name}")
 
     session.close()
 
